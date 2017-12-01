@@ -120,7 +120,7 @@ public class Game4x4Activity extends AppCompatActivity implements View.OnClickLi
             selectButton1.setMatched(true);
 
             selectButton1.setEnabled(false);
-            selectButton2.setEnabled(false);
+            button.setEnabled(false);
 
             selectButton1 = null;
 
