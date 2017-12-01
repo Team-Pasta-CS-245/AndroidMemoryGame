@@ -145,7 +145,7 @@ public class Game4x4Activity extends AppCompatActivity implements View.OnClickLi
 
                     isBusy = false;
                 }
-            }, 250);
+            }, 500);
         }
     }
 }
