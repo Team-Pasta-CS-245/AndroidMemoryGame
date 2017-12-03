@@ -3,13 +3,9 @@ package com.example.lennyyang.memorygameproject;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatDrawableManager;
 import android.widget.GridLayout;
-
-import com.example.lennyyang.memorygameproject.R;
-import android.widget.Button;
 
 /**
  * Created by lennyyang on 11/30/17.

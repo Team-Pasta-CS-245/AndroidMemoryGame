@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridLayout;
-
 import java.util.Random;
 
 public class Game4x4Activity extends AppCompatActivity implements View.OnClickListener {
@@ -28,7 +27,7 @@ public class Game4x4Activity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game4x4);
 
-        GridLayout gridLayout = findViewById(R.id.gird_layout_4x4);
+        GridLayout gridLayout = findViewById(R.id.grid_layout_4x4);
 
         int numColumns = gridLayout.getColumnCount();
         int numRows = gridLayout.getRowCount();

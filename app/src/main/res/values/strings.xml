@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">MemoryGameProject</string>
     <string name="title_memory">Memory Game</string>
-    <string name="menu_option_4x4_game">4x4 Game</string>
+    <string name="menu_option_2x2_game">4 Tiles</string>
+    <string name="menu_option_2x3_game">6 Tiles</string>
+    <string name="menu_option_2x4_game">8 Tiles</string>
+    <string name="menu_option_2x5_game">10 Tiles</string>
+    <string name="menu_option_3x4_game">12 Tiles</string>
+    <string name="menu_option_2x7_game">14 Tiles</string>
+    <string name="menu_option_4x4_game">16 Tiles</string>
+    <string name="menu_option_3x6_game">18 Tiles</string>
+    <string name="menu_option_4x5_game">20 Tiles</string>
 </resources>
