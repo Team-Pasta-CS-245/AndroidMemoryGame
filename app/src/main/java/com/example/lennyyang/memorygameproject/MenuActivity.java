@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class MenuActivity extends AppCompatActivity {
 
+    AudioPlayer audioPlayer;
     MediaPlayer mediaPlayer;
     private Button button2x2;
     private Button button2x3;
@@ -30,6 +31,11 @@ public class MenuActivity extends AppCompatActivity {
         mediaPlayer.setLooping(true); // Set looping
         mediaPlayer.setVolume(100,100);
         mediaPlayer.start();
+        
+        audioPlayer.play(getApplicationContext());
+        audioPlayer.loop();
+        audioPlayer.setVolume(100,100);
+        
 
         button2x2 = findViewById(R.id.button_2x2_game);
         button2x2.setOnClickListener(new View.OnClickListener() {
@@ -118,5 +124,11 @@ public class MenuActivity extends AppCompatActivity {
         super.onPause();
         mediaPlayer.stop();
         mediaPlayer.release();
+    }
+    
+    @Override
+    protected void onPause(){
+        super.onPause();
+        audioPlayer.stop();
     }
 }
