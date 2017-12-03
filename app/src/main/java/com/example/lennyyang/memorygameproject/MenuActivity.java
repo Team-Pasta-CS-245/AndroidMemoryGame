@@ -1,7 +1,6 @@
 package com.example.lennyyang.memorygameproject;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +8,8 @@ import android.widget.Button;
 
 public class MenuActivity extends AppCompatActivity {
 
-    AudioPlayer audioPlayer;
-    MediaPlayer mediaPlayer;
+    AudioPlayer audioPlayer = new AudioPlayer();
+
     private Button button2x2;
     private Button button2x3;
     private Button button2x4;
@@ -21,21 +20,14 @@ public class MenuActivity extends AppCompatActivity {
     private Button button3x6;
     private Button button4x5;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.game_music);
-        mediaPlayer.setLooping(true); // Set looping
-        mediaPlayer.setVolume(100,100);
-        mediaPlayer.start();
-        
         audioPlayer.play(getApplicationContext());
         audioPlayer.loop();
         audioPlayer.setVolume(100,100);
-        
 
         button2x2 = findViewById(R.id.button_2x2_game);
         button2x2.setOnClickListener(new View.OnClickListener() {
@@ -122,13 +114,7 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        mediaPlayer.stop();
-        mediaPlayer.release();
-    }
-    
-    @Override
-    protected void onPause(){
-        super.onPause();
+
         audioPlayer.stop();
     }
 }

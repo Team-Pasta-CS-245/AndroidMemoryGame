@@ -4,19 +4,19 @@ import android.content.Context;
 import android.media.MediaPlayer;
 
 public class AudioPlayer extends Object {
-    private MediaPlayer mPlayer;
+    public MediaPlayer mPlayer;
 
     public void stop(){
         if (mPlayer != null){
+//            mPlayer.stop();
             mPlayer.release();
             mPlayer = null;
         }
     }
 
     public void play(Context c){
-        mPlayer = MediaPlayer.create(c, R.raw.tell_me_love);
+        mPlayer = MediaPlayer.create(c, R.raw.game_music);
         mPlayer.start();
-
     }
 
     public void loop(){
