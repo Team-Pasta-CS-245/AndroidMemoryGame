@@ -26,4 +26,7 @@ public class AudioPlayer extends Object {
     public void setVolume(int l, int r){
         mPlayer.setVolume(l,r);
     }
+    
+    public void resume(){
+        mPlayer.start();
 }
