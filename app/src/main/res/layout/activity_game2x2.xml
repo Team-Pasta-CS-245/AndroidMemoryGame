@@ -9,9 +9,4 @@
     android:id="@+id/grid_layout_2x2"
     tools:context="com.example.lennyyang.memorygameproject.Game2x2Activity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
 </GridLayout>

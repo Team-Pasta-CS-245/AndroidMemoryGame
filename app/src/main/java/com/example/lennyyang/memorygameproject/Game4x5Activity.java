@@ -13,8 +13,10 @@ import android.widget.GridLayout;
 
 import java.util.Random;
 
-
 public class Game4x5Activity extends AppCompatActivity implements View.OnClickListener {
+
+    private int score = 0;
+    private int correct = 0;
 
     private int numberOfElements;
 
@@ -132,6 +134,10 @@ public class Game4x5Activity extends AppCompatActivity implements View.OnClickLi
 
             selectButton1 = null;
 
+            score += 2;
+            correct += 1;
+            System.out.println(score + " " + correct);
+
             return;
         }
         else{
@@ -141,6 +147,12 @@ public class Game4x5Activity extends AppCompatActivity implements View.OnClickLi
             isBusy = true;
 
             final Handler handler = new Handler();
+
+            if(score != 0){
+                score -= 1;
+            }
+
+            System.out.println(score + " " + correct);
 
             handler.postDelayed(new Runnable() {
                 @Override

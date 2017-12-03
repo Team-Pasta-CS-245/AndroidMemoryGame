@@ -62,7 +62,6 @@ public class MemoryButton extends AppCompatButton {
     public void flip(){
         if(isMatched){
             return;
-
         }
 
         if(isFlipped){

@@ -4,6 +4,7 @@ package com.example.lennyyang.memorygameproject;
  * Created by lennyyang on 12/2/17.
  */
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import java.util.Random;
 
 public class Game2x2Activity extends AppCompatActivity implements View.OnClickListener {
 
+    private int correct = 0;
     private int score = 0;
 
     private int numberOfElements;
@@ -109,7 +111,6 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
 
         if (selectButton1.getId() == button.getId()){
             return;
-
         }
 
         if(selectButton1.getFrontDrawableId() == button.getFrontDrawableId()){
@@ -124,6 +125,20 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
 
             selectButton1 = null;
 
+            score += 2;
+            correct += 1;
+
+            System.out.println(score + " " + correct);
+
+            if(correct == 2){
+                Intent intent = new Intent(this, Game2x2Activity.class);
+//                intent.putString("key1", var1);// if its string type
+                Intent.putExtra("key2", score);// if its int type
+                startActivity(intent);
+
+                setContentView(R.layout.activity_score_submit);
+            }
+
             return;
         }
         else{
@@ -131,6 +146,12 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
             selectButton2.flip();
 
             isBusy = true;
+
+            if(score != 0){
+                score -= 1;
+            }
+
+            System.out.println(score + " " + correct);
 
             final Handler handler = new Handler();
 
