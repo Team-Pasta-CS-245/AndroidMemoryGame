@@ -15,6 +15,8 @@ import java.util.Random;
 
 public class Game2x2Activity extends AppCompatActivity implements View.OnClickListener {
 
+    private int score = 0;
+
     private int numberOfElements;
 
     private MemoryButton[] buttons;
