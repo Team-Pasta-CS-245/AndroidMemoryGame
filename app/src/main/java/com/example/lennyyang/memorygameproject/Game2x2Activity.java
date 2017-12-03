@@ -131,12 +131,14 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
             System.out.println(score + " " + correct);
 
             if(correct == 2){
-                Intent intent = new Intent(this, Game2x2Activity.class);
-//                intent.putString("key1", var1);// if its string type
-                Intent.putExtra("key2", score);// if its int type
-                startActivity(intent);
 
-                setContentView(R.layout.activity_score_submit);
+                Intent mIntent = new Intent(this, ScoreActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putString("test", Integer.toString(score));
+                mIntent.putExtras(mBundle);
+                startActivity(mIntent);
+
+//                setContentView(R.layout.activity_score_submit);
             }
 
             return;

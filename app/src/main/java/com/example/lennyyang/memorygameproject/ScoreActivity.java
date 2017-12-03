@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * Created by lennyyang on 12/3/17.
@@ -15,9 +16,12 @@ public class ScoreActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_submit);
 
-        Intent intent = getIntent();
-//        String var1 = intent.getStringExtra("key1");
-        int i = var2.getIntExtra("key2", 0);
+        String value = getIntent().getExtras().getString("test");
+
+        TextView textView = findViewById(R.id.score);
+        textView.setText(value);
+
+        System.out.println(value);
     }
 
     public void onClick(View view) {
