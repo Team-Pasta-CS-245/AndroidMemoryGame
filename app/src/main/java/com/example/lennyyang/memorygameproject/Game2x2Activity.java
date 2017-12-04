@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import java.util.Random;
 
@@ -35,7 +36,6 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game2x2);
-
         GridLayout gridLayout = findViewById(R.id.grid_layout_2x2);
 
         int numColumns = gridLayout.getColumnCount();
@@ -144,6 +144,7 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
             return;
         }
         else{
+
             selectButton2 = button;
             selectButton2.flip();
 
@@ -154,12 +155,11 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
             }
 
             System.out.println(score + " " + correct);
+            Button clickButton = findViewById(R.id.try_again_button);
+            clickButton.setOnClickListener( new View.OnClickListener() {
 
-            final Handler handler = new Handler();
-
-            handler.postDelayed(new Runnable() {
                 @Override
-                public void run() {
+                public void onClick(View v) {
                     selectButton2.flip();
                     selectButton1.flip();
 
@@ -168,7 +168,22 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
 
                     isBusy = false;
                 }
-            }, 500);
+            });
+
+//            final Handler handler = new Handler();
+
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    selectButton2.flip();
+//                    selectButton1.flip();
+//
+//                    selectButton1 = null;
+//                    selectButton2 = null;
+//
+//                    isBusy = false;
+//                }
+//            }, 500);
         }
     }
 

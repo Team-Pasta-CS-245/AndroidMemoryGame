@@ -1,14 +1,19 @@
 package com.example.lennyyang.memorygameproject;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import java.util.Random;
 
 public class Game4x4Activity extends AppCompatActivity implements View.OnClickListener {
+
+    private int correct = 0;
+    private int score = 0;
 
     private int numberOfElements;
 
@@ -88,7 +93,6 @@ public class Game4x4Activity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-
         if(isBusy){
             return;
         }
@@ -121,6 +125,20 @@ public class Game4x4Activity extends AppCompatActivity implements View.OnClickLi
             selectButton1.setEnabled(false);
             button.setEnabled(false);
 
+            score += 2;
+            correct += 1;
+
+            if(correct == 8){
+
+                Intent mIntent = new Intent(this, ScoreActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putString("test", Integer.toString(score));
+                mIntent.putExtras(mBundle);
+                startActivity(mIntent);
+
+//                setContentView(R.layout.activity_score_submit);
+            }
+
             selectButton1 = null;
 
             return;
@@ -131,11 +149,15 @@ public class Game4x4Activity extends AppCompatActivity implements View.OnClickLi
 
             isBusy = true;
 
-            final Handler handler = new Handler();
+            if(score != 0){
+                score -= 1;
+            }
 
-            handler.postDelayed(new Runnable() {
+            Button clickButton = findViewById(R.id.try_again_button);
+            clickButton.setOnClickListener( new View.OnClickListener() {
+
                 @Override
-                public void run() {
+                public void onClick(View v) {
                     selectButton2.flip();
                     selectButton1.flip();
 
@@ -144,7 +166,22 @@ public class Game4x4Activity extends AppCompatActivity implements View.OnClickLi
 
                     isBusy = false;
                 }
-            }, 500);
+            });
+
+//            final Handler handler = new Handler();
+
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    selectButton2.flip();
+//                    selectButton1.flip();
+//
+//                    selectButton1 = null;
+//                    selectButton2 = null;
+//
+//                    isBusy = false;
+//                }
+//            }, 500);
         }
     }
 }

@@ -4,11 +4,13 @@ package com.example.lennyyang.memorygameproject;
  * Created by lennyyang on 12/2/17.
  */
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 
 import java.util.Random;
@@ -138,6 +140,17 @@ public class Game4x5Activity extends AppCompatActivity implements View.OnClickLi
             correct += 1;
             System.out.println(score + " " + correct);
 
+            if(correct == 10){
+
+                Intent mIntent = new Intent(this, ScoreActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putString("test", Integer.toString(score));
+                mIntent.putExtras(mBundle);
+                startActivity(mIntent);
+
+//                setContentView(R.layout.activity_score_submit);
+            }
+
             return;
         }
         else{
@@ -152,11 +165,11 @@ public class Game4x5Activity extends AppCompatActivity implements View.OnClickLi
                 score -= 1;
             }
 
-            System.out.println(score + " " + correct);
+            Button clickButton = findViewById(R.id.try_again_button);
+            clickButton.setOnClickListener( new View.OnClickListener() {
 
-            handler.postDelayed(new Runnable() {
                 @Override
-                public void run() {
+                public void onClick(View v) {
                     selectButton2.flip();
                     selectButton1.flip();
 
@@ -165,7 +178,22 @@ public class Game4x5Activity extends AppCompatActivity implements View.OnClickLi
 
                     isBusy = false;
                 }
-            }, 500);
+            });
+
+//            System.out.println(score + " " + correct);
+//
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    selectButton2.flip();
+//                    selectButton1.flip();
+//
+//                    selectButton1 = null;
+//                    selectButton2 = null;
+//
+//                    isBusy = false;
+//                }
+//            }, 500);
         }
     }
 

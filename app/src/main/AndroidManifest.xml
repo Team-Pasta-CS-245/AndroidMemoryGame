@@ -28,4 +28,5 @@
         <activity android:name=".ScoreActivity"></activity>
     </application>
 
+
 </manifest>

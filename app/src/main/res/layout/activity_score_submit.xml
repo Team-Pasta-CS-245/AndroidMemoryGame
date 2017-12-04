@@ -9,13 +9,22 @@
     android:orientation="vertical"
     tools:layout_editor_absoluteY="81dp">
 
+    <TextView
+        android:id="@+id/high_score_title"
+        android:layout_width="103dp"
+        android:layout_height="41dp"
+        android:textSize="32sp"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="226dp"
+        android:text="@string/high_score_title"/>
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="Enter Name"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="152dp" />
 

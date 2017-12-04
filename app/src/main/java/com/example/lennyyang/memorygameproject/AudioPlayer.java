@@ -8,14 +8,14 @@ public class AudioPlayer extends Object {
 
     public void stop(){
         if (mPlayer != null){
-//            mPlayer.stop();
+            mPlayer.stop();
             mPlayer.release();
             mPlayer = null;
         }
     }
 
     public void play(Context c){
-        mPlayer = MediaPlayer.create(c, R.raw.game_music);
+        mPlayer = MediaPlayer.create(c, R.raw.rain_dog);
         mPlayer.start();
     }
 
@@ -27,6 +27,7 @@ public class AudioPlayer extends Object {
         mPlayer.setVolume(l,r);
     }
     
-    public void resume(){
+    public void resume() {
         mPlayer.start();
+    }
 }

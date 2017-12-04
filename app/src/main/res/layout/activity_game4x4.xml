@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
+
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="4"
-    android:rowCount="4"
-    android:id="@+id/grid_layout_4x4"
+    android:id="@+id/relative_layout_4x4"
     tools:context="com.example.lennyyang.memorygameproject.Game4x4Activity">
 
-</GridLayout>
+    <Button
+        android:id="@+id/try_again_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/try_again_button"
+        android:layout_alignParentRight="true"/>
+    <GridLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="4"
+        android:rowCount="4"
+        android:id="@+id/grid_layout_4x4"
+        tools:context="com.example.lennyyang.memorygameproject.Game4x4Activity">
+
+    </GridLayout>
+</RelativeLayout>
