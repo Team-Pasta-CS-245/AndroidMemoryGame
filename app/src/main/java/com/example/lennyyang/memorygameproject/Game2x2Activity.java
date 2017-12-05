@@ -65,6 +65,9 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
                 gridLayout.addView(tempButton);
             }
         }
+
+        final Button tryAgain = findViewById(R.id.try_again_button);
+        tryAgain.setEnabled(false);
     }
 
     protected void shuffleButtonGraphics(){
@@ -91,7 +94,10 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
 
-        Button newGame = findViewById(R.id.new_game_button);
+        final Button endGame = findViewById(R.id.end_game_button);
+        final Button newGame = findViewById(R.id.new_game_button);
+        final Button tryAgain = findViewById(R.id.try_again_button);
+
         newGame.setOnClickListener( new View.OnClickListener() {
 
             @Override
@@ -102,15 +108,17 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-        Button endGame = findViewById(R.id.end_game_button);
         endGame.setOnClickListener( new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 for(int x = 0; x < buttons.length; x++){
-                    isBusy = false;
+                    isBusy = true;
+                    if(buttons[x].isFlipped == false)
                     buttons[x].flip();
                 }
+                endGame.setEnabled(false);
+                tryAgain.setEnabled(false);
             }
         });
 
@@ -121,6 +129,7 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
         MemoryButton button = (MemoryButton) view;
 
         if(button.isMatched){
+            tryAgain.setEnabled(false);
             return;
         }
 
@@ -159,8 +168,6 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
                 mBundle.putString("test", Integer.toString(score));
                 mIntent.putExtras(mBundle);
                 startActivity(mIntent);
-
-//                setContentView(R.layout.activity_score_submit);
             }
 
             return;
@@ -177,12 +184,12 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
             }
 
             System.out.println(score + " " + correct);
-
-            Button clickButton = findViewById(R.id.try_again_button);
-            clickButton.setOnClickListener( new View.OnClickListener() {
+            tryAgain.setEnabled(true);
+            tryAgain.setOnClickListener( new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
+                    tryAgain.setEnabled(false);
                     selectButton2.flip();
                     selectButton1.flip();
 
@@ -190,23 +197,9 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
                     selectButton2 = null;
 
                     isBusy = false;
+
                 }
             });
-
-//            final Handler handler = new Handler();
-
-//            handler.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    selectButton2.flip();
-//                    selectButton1.flip();
-//
-//                    selectButton1 = null;
-//                    selectButton2 = null;
-//
-//                    isBusy = false;
-//                }
-//            }, 500);
         }
     }
 

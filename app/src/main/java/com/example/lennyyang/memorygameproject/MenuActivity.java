@@ -124,16 +124,4 @@ public class MenuActivity extends AppCompatActivity {
         });
 
     }
-    
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        audioPlayer.resume();
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        audioPlayer.stop();
-//    }
 }

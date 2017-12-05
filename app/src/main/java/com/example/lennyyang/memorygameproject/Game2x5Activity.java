@@ -6,13 +6,12 @@ package com.example.lennyyang.memorygameproject;
 
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
-
 import java.util.Random;
 
 
@@ -37,7 +36,6 @@ public class Game2x5Activity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game2x5);
-
         GridLayout gridLayout = findViewById(R.id.grid_layout_2x5);
 
         int numColumns = gridLayout.getColumnCount();
@@ -55,7 +53,6 @@ public class Game2x5Activity extends AppCompatActivity implements View.OnClickLi
         buttonGraphics[3] = R.drawable.button_4;
         buttonGraphics[4] = R.drawable.button_5;
 
-
         buttonGraphicLocations = new int[numberOfElements];
 
         shuffleButtonGraphics();
@@ -72,6 +69,8 @@ public class Game2x5Activity extends AppCompatActivity implements View.OnClickLi
             }
         }
 
+        final Button tryAgain = findViewById(R.id.try_again_button);
+        tryAgain.setEnabled(false);
     }
 
     protected void shuffleButtonGraphics(){
@@ -98,6 +97,34 @@ public class Game2x5Activity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
 
+        final Button endGame = findViewById(R.id.end_game_button);
+        final Button newGame = findViewById(R.id.new_game_button);
+        final Button tryAgain = findViewById(R.id.try_again_button);
+
+        newGame.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
+
+        endGame.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                for(int x = 0; x < buttons.length; x++){
+                    isBusy = true;
+                    if(buttons[x].isFlipped == false)
+                        buttons[x].flip();
+                }
+                endGame.setEnabled(false);
+                tryAgain.setEnabled(false);
+            }
+        });
+
         if(isBusy){
             return;
         }
@@ -105,6 +132,7 @@ public class Game2x5Activity extends AppCompatActivity implements View.OnClickLi
         MemoryButton button = (MemoryButton) view;
 
         if(button.isMatched){
+            tryAgain.setEnabled(false);
             return;
         }
 
@@ -117,7 +145,6 @@ public class Game2x5Activity extends AppCompatActivity implements View.OnClickLi
 
         if (selectButton1.getId() == button.getId()){
             return;
-
         }
 
         if(selectButton1.getFrontDrawableId() == button.getFrontDrawableId()){
@@ -130,8 +157,12 @@ public class Game2x5Activity extends AppCompatActivity implements View.OnClickLi
             selectButton1.setEnabled(false);
             button.setEnabled(false);
 
+            selectButton1 = null;
+
             score += 2;
             correct += 1;
+
+            System.out.println(score + " " + correct);
 
             if(correct == 5){
 
@@ -140,15 +171,12 @@ public class Game2x5Activity extends AppCompatActivity implements View.OnClickLi
                 mBundle.putString("test", Integer.toString(score));
                 mIntent.putExtras(mBundle);
                 startActivity(mIntent);
-
-//                setContentView(R.layout.activity_score_submit);
             }
-
-            selectButton1 = null;
 
             return;
         }
         else{
+
             selectButton2 = button;
             selectButton2.flip();
 
@@ -158,11 +186,13 @@ public class Game2x5Activity extends AppCompatActivity implements View.OnClickLi
                 score -= 1;
             }
 
-            Button clickButton = findViewById(R.id.try_again_button);
-            clickButton.setOnClickListener( new View.OnClickListener() {
+            System.out.println(score + " " + correct);
+            tryAgain.setEnabled(true);
+            tryAgain.setOnClickListener( new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
+                    tryAgain.setEnabled(false);
                     selectButton2.flip();
                     selectButton1.flip();
 
@@ -170,23 +200,9 @@ public class Game2x5Activity extends AppCompatActivity implements View.OnClickLi
                     selectButton2 = null;
 
                     isBusy = false;
+
                 }
             });
-
-//            final Handler handler = new Handler();
-//
-//            handler.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    selectButton2.flip();
-//                    selectButton1.flip();
-//
-//                    selectButton1 = null;
-//                    selectButton2 = null;
-//
-//                    isBusy = false;
-//                }
-//            }, 500);
         }
     }
 
