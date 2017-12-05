@@ -15,7 +15,7 @@ public class AudioPlayer extends Object {
     }
 
     public void play(Context c){
-        mPlayer = MediaPlayer.create(c, R.raw.rain_dog);
+        mPlayer = MediaPlayer.create(c, R.raw.sesame_street_the_pasta_song);
         mPlayer.start();
     }
 

@@ -27,6 +27,4 @@
         <activity android:name=".Game4x5Activity"></activity>
         <activity android:name=".ScoreActivity"></activity>
     </application>
-
-
 </manifest>

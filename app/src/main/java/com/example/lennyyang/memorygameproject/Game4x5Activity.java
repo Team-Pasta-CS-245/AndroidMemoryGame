@@ -210,5 +210,4 @@ public class Game4x5Activity extends AppCompatActivity implements View.OnClickLi
             });
         }
     }
-
 }
