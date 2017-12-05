@@ -11,7 +11,7 @@ import android.widget.ToggleButton;
 
 public class MenuActivity extends AppCompatActivity {
 
-//    AudioPlayer audioPlayer = new AudioPlayer();
+    AudioPlayer audioPlayer = new AudioPlayer();
 
     private Button button2x2;
     private Button button2x3;
@@ -28,10 +28,6 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
-//        audioPlayer.play(getApplicationContext());
-//        audioPlayer.loop();
-//        audioPlayer.setVolume(100,100);
 
         button2x2 = findViewById(R.id.button_2x2_game);
         button2x2.setOnClickListener(new View.OnClickListener() {
@@ -113,12 +109,14 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
         musicOnOff = findViewById(R.id.toggleButton);
         musicOnOff.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     audioPlayer.play(getApplicationContext());
+                    audioPlayer.loop();
+                    audioPlayer.setVolume(100,100);
                 } else {
                     audioPlayer.stop();
                 }

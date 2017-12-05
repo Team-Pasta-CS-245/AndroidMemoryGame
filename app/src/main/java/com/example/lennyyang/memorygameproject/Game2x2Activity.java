@@ -65,7 +65,6 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
                 gridLayout.addView(tempButton);
             }
         }
-
     }
 
     protected void shuffleButtonGraphics(){
@@ -91,6 +90,29 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
+
+        Button newGame = findViewById(R.id.new_game_button);
+        newGame.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
+
+        Button endGame = findViewById(R.id.end_game_button);
+        endGame.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                for(int x = 0; x < buttons.length; x++){
+                    isBusy = false;
+                    buttons[x].flip();
+                }
+            }
+        });
 
         if(isBusy){
             return;
@@ -155,6 +177,7 @@ public class Game2x2Activity extends AppCompatActivity implements View.OnClickLi
             }
 
             System.out.println(score + " " + correct);
+
             Button clickButton = findViewById(R.id.try_again_button);
             clickButton.setOnClickListener( new View.OnClickListener() {
 
