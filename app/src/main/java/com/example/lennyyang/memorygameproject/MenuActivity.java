@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.ToggleButton;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -20,6 +22,7 @@ public class MenuActivity extends AppCompatActivity {
     private Button button4x4;
     private Button button3x6;
     private Button button4x5;
+    private ToggleButton musicOnOff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
