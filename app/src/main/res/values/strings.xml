@@ -12,4 +12,6 @@
     <string name="menu_option_4x5_game">20 Tiles</string>
     <string name="try_again_button">Try Again</string>
     <string name="high_score_title">High Score</string>
-\</resources>
+    <string name="end_game_title">End Game</string>
+    <string name="new_game_title">New Game</string>
+</resources>
