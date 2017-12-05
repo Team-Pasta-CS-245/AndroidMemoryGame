@@ -110,6 +110,17 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        
+        musicOnOff = findViewById(R.id.toggleButton);
+        musicOnOff.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    audioPlayer.play(getApplicationContext());
+                } else {
+                    audioPlayer.stop();
+                }
+            }
+        });
 
     }
     
