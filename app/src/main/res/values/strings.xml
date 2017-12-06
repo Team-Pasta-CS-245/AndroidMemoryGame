@@ -14,4 +14,7 @@
     <string name="high_score_title">High Score</string>
     <string name="end_game_title">End Game</string>
     <string name="new_game_title">New Game</string>
+    <string name="high_scores">Scores</string>
+    <string name="button_load_scores">Show High Scores</string>
+    <string name="high_score_info">Display High Scores</string>
 </resources>

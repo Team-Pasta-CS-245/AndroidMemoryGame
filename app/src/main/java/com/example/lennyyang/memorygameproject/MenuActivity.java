@@ -24,11 +24,21 @@ public class MenuActivity extends AppCompatActivity {
     private Button button3x6;
     private Button button4x5;
     private ToggleButton musicOnOff;
+    private Button highScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        highScores = findViewById(R.id.high_scores);
+        highScores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, HighScoreActivity.class);
+                startActivity(intent);
+            }
+        });
 
         button2x2 = findViewById(R.id.button_2x2_game);
         button2x2.setOnClickListener(new View.OnClickListener() {

@@ -16,15 +16,48 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game2x2Activity"></activity>
-        <activity android:name=".Game2x3Activity"></activity>
-        <activity android:name=".Game2x4Activity"></activity>
-        <activity android:name=".Game2x5Activity"></activity>
-        <activity android:name=".Game3x4Activity"></activity>
-        <activity android:name=".Game2x7Activity"></activity>
-        <activity android:name=".Game4x4Activity"></activity>
-        <activity android:name=".Game3x6Activity"></activity>
-        <activity android:name=".Game4x5Activity"></activity>
-        <activity android:name=".ScoreActivity"></activity>
+        <activity
+            android:name=".Game2x2Activity"
+            android:parentActivityName="com.example.lennyyang.memorygameproject.MenuActivity"
+            ></activity>
+        <activity
+            android:name=".Game2x3Activity"
+            android:parentActivityName="com.example.lennyyang.memorygameproject.MenuActivity"
+            ></activity>
+        <activity
+            android:name=".Game2x4Activity"
+            android:parentActivityName="com.example.lennyyang.memorygameproject.MenuActivity"
+            ></activity>
+        <activity
+            android:name=".Game2x5Activity"
+            android:parentActivityName="com.example.lennyyang.memorygameproject.MenuActivity"
+            ></activity>
+        <activity
+            android:name=".Game3x4Activity"
+            android:parentActivityName="com.example.lennyyang.memorygameproject.MenuActivity"
+            ></activity>
+        <activity
+            android:name=".Game2x7Activity"
+            android:parentActivityName="com.example.lennyyang.memorygameproject.MenuActivity"
+            ></activity>
+        <activity
+            android:name=".Game4x4Activity"
+            android:parentActivityName="com.example.lennyyang.memorygameproject.MenuActivity"
+            ></activity>
+        <activity
+            android:name=".Game3x6Activity"
+            android:parentActivityName="com.example.lennyyang.memorygameproject.MenuActivity"
+            ></activity>
+        <activity
+            android:name=".Game4x5Activity"
+            android:parentActivityName="com.example.lennyyang.memorygameproject.MenuActivity"
+            ></activity>
+        <activity
+            android:name=".ScoreActivity"
+            ></activity>
+        <activity
+            android:name=".HighScoreActivity"
+            android:parentActivityName="com.example.lennyyang.memorygameproject.MenuActivity"
+            ></activity>
     </application>
 </manifest>
