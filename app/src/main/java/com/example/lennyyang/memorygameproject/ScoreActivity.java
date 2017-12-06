@@ -15,9 +15,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+import java.io.BufferedWriter;
 import java.util.Scanner;
 
 /**
@@ -35,17 +37,18 @@ public class ScoreActivity extends AppCompatActivity implements View.OnClickList
         TextView textView = findViewById(R.id.score);
         textView.setText(value);
 
-        EditText nameView = findViewById(R.id.scoreName);
+        final EditText nameView = findViewById(R.id.scoreName);
 
         final String theHighScore = textView.getText().toString();
-        final String theName = nameView.getText().toString();
-
-        System.out.println(value);
 
         Button yourButton = findViewById(R.id.submit_button);
 
         yourButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                final String theName = nameView.getText().toString();
+                Log.d("checker", "Click registered.");
+                Log.d("check", theName);
+                Log.d("check", theHighScore);
                 writeToFile(theName + theHighScore, getApplicationContext());
                 startActivity(new Intent(ScoreActivity.this, MenuActivity.class));
             }
@@ -108,7 +111,8 @@ public class ScoreActivity extends AppCompatActivity implements View.OnClickList
 
     private void writeToFile(String data,Context context) {
         try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("highscores", Context.MODE_PRIVATE));
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("highscores.json", Context.MODE_PRIVATE));
+            Log.d("writer","write method");
             outputStreamWriter.write(data);
             outputStreamWriter.close();
         }
