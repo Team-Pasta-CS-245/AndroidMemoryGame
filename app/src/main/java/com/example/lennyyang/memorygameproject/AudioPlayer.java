@@ -1,3 +1,14 @@
+/***************************************************************
+ * file: AudioPlayer.java
+ * author: Lenny Yang, Rachel Frodsham, Jenna Barret
+ * class: CS 245.01 – Programming Graphical User Interfaces
+ *
+ * assignment: Android Project
+ * date last modified: 12/05/2017
+ *
+ * purpose:  This program creates the background music for the app
+ *
+ ****************************************************************/
 package com.example.lennyyang.memorygameproject;
 
 import android.content.Context;
